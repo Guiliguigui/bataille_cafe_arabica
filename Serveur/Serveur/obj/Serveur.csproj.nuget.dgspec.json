@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "restore": {
+    "Z:\\café\\bataille_cafe_arabica\\Serveur\\Serveur\\Serveur.csproj": {}
+  },
+  "projects": {
+    "Z:\\café\\bataille_cafe_arabica\\Serveur\\Serveur\\Serveur.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "Z:\\café\\bataille_cafe_arabica\\Serveur\\Serveur\\Serveur.csproj",
+        "projectName": "Serveur",
+        "projectPath": "Z:\\café\\bataille_cafe_arabica\\Serveur\\Serveur\\Serveur.csproj",
+        "packagesPath": "C:\\Users\\ferh\\.nuget\\packages\\",
+        "outputPath": "Z:\\café\\bataille_cafe_arabica\\Serveur\\Serveur\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "\\\\merlin\\etudiants\\ferh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
