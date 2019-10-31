@@ -14,4 +14,16 @@ public class Decodage
         }
         return tabValeursCarte;
     }
+
+    public static void AffichageCarte(char[,] carteDecode)
+    {
+        for(int index1=0;index1<10;index1++)
+        {
+            for (int index2 = 0; index2 < 10; index2++)
+            {
+                Console.Write(carteDecode[index1, index2]);
+            }
+            Console.WriteLine();
+        }
+    }
 }
