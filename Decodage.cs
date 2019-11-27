@@ -106,21 +106,13 @@ public class Decodage
                     Spread(ref carteDecode, index1, index2, tabValeursCarte);
                     premiereParcelle = false;
                 }
-            }
-        }
-
-        for (int index1 = 0; index1 < 10; index1++)
-        {
-            for (int index2 = 0; index2 < 10; index2++)
-            {
-                if (carteDecode[index1, index2] == '\0')
+                else if (carteDecode[index1, index2] == '\0')
                 {
                     carteDecode[index1, index2] = derniereParcelle = (char)((int)derniereParcelle + 1);
                     Spread(ref carteDecode, index1, index2, tabValeursCarte);
                 }
             }
         }
-
         return carteDecode;
     }
 
