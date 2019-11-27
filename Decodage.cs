@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arabica
 {
-    public class Decodage
+    public class PartieDecodage
     {
         public static int[,] Lecture(string trame)
         {
