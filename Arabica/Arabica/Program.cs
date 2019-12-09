@@ -17,8 +17,8 @@ namespace Arabica
             string address_ip = "51.91.120.237";
             //string address_ip = "172.16.0.88";
             int port_number = 1212;
-            Serveur.ConnectionServeur(ref S, address_ip, port_number);
-            string Trame = Serveur.RecevoirDuServeur(ref S);
+            PartieServeur.ConnectionServeur(ref S, address_ip, port_number);
+            string Trame = PartieServeur.RecevoirDuServeur(ref S);
             int[,] tabValeursCarte = new int[10, 10];
             tabValeursCarte = PartieDecodage.Lecture(Trame);
             //tabValeursCarte = PartieDecodage.Lecture("67:69:69:69:69:69:69:69:69:73|74:3:9:7:5:13:3:1:9:74|74:2:8:7:5:13:6:4:12:74|74:6:12:7:9:7:13:3:9:74|74:3:9:11:6:13:7:4:8:74|74:6:12:6:13:11:3:13:14:74|74:7:13:7:13:10:10:3:9:74|74:3:9:11:7:12:14:2:8:74|74:6:12:6:13:7:13:6:12:74|70:69:69:69:69:69:69:69:69:76|");

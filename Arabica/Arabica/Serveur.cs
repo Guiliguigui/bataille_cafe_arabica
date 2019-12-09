@@ -12,7 +12,7 @@ namespace Arabica
     /*Class Serveur
      * Cette classe sert pour tout ce qui concerne le serveur
      */
-    class Serveur
+    class PartieServeur
     {
         /*FP1 :Procédure ConnectionServeur
          * Elle permet de se connecter au serveur et quitte le programme  en cas d'echec

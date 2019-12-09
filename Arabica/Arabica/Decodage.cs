@@ -15,7 +15,7 @@ namespace Arabica
         /* FP1  Lecture
          * Permet de stocker les valeurs de la trame dans un tableau d'entier de 10 par 10
          * Input  : Trame de la carte obtenu dans la partie serveur
-         * Output : Tableau des valeurs pour chaque parcelles de la trame 
+         * Output : Tableau des valeurs pour chaque case de la trame 
          */
         public static int[,] Lecture(string trame)
         {
@@ -34,7 +34,7 @@ namespace Arabica
          * Permet d'étendre une parcelle jusqu'à ses bordures
          * Input  : Par référence : La carte décodée
          *          Par valeur : -les deux index de la position de la case (qui n'est pas mer ou foret) 
-         *                       -le tableau des valeurs pour chaque parcelles de la trame 
+         *                       -le tableau des valeurs pour chaque case de la trame 
          * Output : Void
          */
         public static void Spread(ref char[,] carteDecode, int index1, int index2, int[,] tabValeursCarte)
@@ -109,7 +109,7 @@ namespace Arabica
 
         /* FP2 Decodage 
          * Permet de décoder les valeurs contenues dans le tableau pour créer le tableau final avec les parcelles nommées
-         * Input  : Tableau des valeurs pour chaque parcelles de la trame
+         * Input  : Tableau des appartenances parcelle pour chaque cases de la trame
          * Output : Tableau prêt à être afficher avec les parcelles nommées
          */
         public static char[,] Decodage(int[,] tabValeursCarte)
