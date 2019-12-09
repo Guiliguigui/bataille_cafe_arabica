@@ -15,6 +15,7 @@ namespace Arabica
         {
             Socket S = null;
             string address_ip = "51.91.120.237";
+            //string address_ip = "172.16.0.88";
             int port_number = 1212;
             Serveur.ConnectionServeur(ref S, address_ip, port_number);
             string Trame = Serveur.RecevoirDuServeur(ref S);
