@@ -1,0 +1,7 @@
+Z:\DUT2\bataille_cafe_arabica\Arabica\Arabica\bin\Debug\Arabica.exe.config
+Z:\DUT2\bataille_cafe_arabica\Arabica\Arabica\bin\Debug\Arabica.exe
+Z:\DUT2\bataille_cafe_arabica\Arabica\Arabica\bin\Debug\Arabica.pdb
+Z:\DUT2\bataille_cafe_arabica\Arabica\Arabica\obj\Debug\Arabica.csprojAssemblyReference.cache
+Z:\DUT2\bataille_cafe_arabica\Arabica\Arabica\obj\Debug\Arabica.csproj.CoreCompileInputs.cache
+Z:\DUT2\bataille_cafe_arabica\Arabica\Arabica\obj\Debug\Arabica.exe
+Z:\DUT2\bataille_cafe_arabica\Arabica\Arabica\obj\Debug\Arabica.pdb
