@@ -90,7 +90,7 @@ namespace ArabicaLibrary
                     bool bordureNord = false, bordureOuest = false, bordureEst = false, bordureSud = false;
                     int valeurCase = tabValeursCarte[tmpCase[0], tmpCase[1]];
                     char nomCase = carte[tmpCase[0], tmpCase[1]];
-                    Case caseObjet = new Case(tmpCase[0], tmpCase[1], nomCase);
+                    Case caseObjet = new Case(tmpCase[0], tmpCase[1], parcelleObjet);
                     this.carteObjet[tmpCase[0], tmpCase[1]] = caseObjet;
                     parcelleObjet.ajouterCase(caseObjet);
 
@@ -183,7 +183,7 @@ namespace ArabicaLibrary
                         carte[index1, index2] = 'a';
                         Parcelle parcelleObjet = new Parcelle('a');
                         parcelles.Add(parcelleObjet);
-                        Case caseObjet = new Case(index1, index2, carte[index1, index2]);
+                        Case caseObjet = new Case(index1, index2, parcelleObjet);
                         this.carteObjet[index1, index2] = caseObjet;
                         parcelleObjet.ajouterCase(caseObjet);
                         Spread(index1, index2, tabValeursCarte, parcelleObjet);
@@ -194,7 +194,7 @@ namespace ArabicaLibrary
                         carte[index1, index2] = derniereParcelle = (char)((int)derniereParcelle + 1); // Pour l'incrémentation des noms des parcelles utilisation du code ASCII
                         Parcelle parcelleObjet = new Parcelle(derniereParcelle);
                         parcelles.Add(parcelleObjet);
-                        Case caseObjet = new Case(index1, index2, carte[index1, index2]);
+                        Case caseObjet = new Case(index1, index2, parcelleObjet);
                         this.carteObjet[index1, index2] = caseObjet;
                         parcelleObjet.ajouterCase(caseObjet);
                         Spread(index1, index2, tabValeursCarte,parcelleObjet);
