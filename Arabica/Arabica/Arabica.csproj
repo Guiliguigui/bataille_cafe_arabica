@@ -51,5 +51,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArabicaLibrary\ArabicaLibrary.csproj">
+      <Project>{c7e4d7b2-2880-4061-b8b2-883ef111b343}</Project>
+      <Name>ArabicaLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
