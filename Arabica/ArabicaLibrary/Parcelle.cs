@@ -12,6 +12,7 @@ namespace ArabicaLibrary
         private List<Case> cases = new List<Case>();
         private byte nbCase;
         private byte nbCaseJouees;
+        private Dictionary<IA, int> casesPlantéesIA = new Dictionary<IA, int>();
 
         public Parcelle(char nom)
         {

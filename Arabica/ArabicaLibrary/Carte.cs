@@ -17,41 +17,8 @@ namespace ArabicaLibrary
             int[,] tabValeursCarte = new int[10, 10];
             tabValeursCarte = Lecture(trame);
             Decodage(tabValeursCarte);
-            //initCarteObjet();
-            
         }
-
         
-        //private void initCarteObjet()
-        //{
-        //    char lastParcelle = 'a';
-        //    for (byte index1 = 0; index1 < 10; index1++)
-        //    {
-        //        for (byte index2 = 0; index2 < 10; index2++)
-        //        {
-        //            this.carteObjet[index1, index2] = new Case(index1, index2, carte[index1, index2]);
-        //            if (carte[index1, index2] > lastParcelle)
-        //                lastParcelle = carte[index1, index2];
-        //        }
-        //    }
-
-        //    int nbParcelles = lastParcelle - 'a';
-        //    for(byte index=0; index<nbParcelles; index++)
-        //    {
-        //        parcelles.Add(new Parcelle((char)((int)'a' + index)));
-        //    }
-
-        //    for (byte index1 = 0; index1 < 10; index1++)
-        //    {
-        //        for (byte index2 = 0; index2 < 10; index2++)
-        //        {
-        //            parcelles[]
-        //        }
-        //    }
-        //}
-
-
-
         //Les méthodes initialement contenues dans Decodage.cs ont été déplacées et réadaptées pour simplifier le code
 
         /* FP1  Lecture
