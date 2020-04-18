@@ -12,6 +12,9 @@ namespace ArabicaLibrary
         private Case[,] carteObjet = new Case[10, 10];
         private List<Parcelle> parcelles= new List<Parcelle>();
 
+        public Case[,] CarteObjet { get => carteObjet;}
+        public List<Parcelle> Parcelles { get => parcelles;}
+
         public Carte(string trame)
         {
             int[,] tabValeursCarte = new int[10, 10];

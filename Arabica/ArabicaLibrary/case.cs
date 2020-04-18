@@ -20,14 +20,15 @@ namespace ArabicaLibrary
             proprietaire = null;
         }
 
-        public int X { get => x; set => x = value; }
-        public int Y { get => y; set => y = value; }
-        public Parcelle Parcelle { get => parcelle; set => parcelle = value; }
-        public IA Proprietaire { get => proprietaire; set => proprietaire = value; }
+        public int X { get => x;}
+        public int Y { get => y;}
+        public Parcelle Parcelle { get => parcelle;}
+        public IA Proprietaire { get => proprietaire;}
 
-        public void planter(IA proprietaire)
+        public void planter(IA planteur)
         {
-            this.proprietaire = proprietaire;
+            this.proprietaire = planteur;
+            this.parcelle.nouvelleCasePlantee(planteur);
         }
     }
 }

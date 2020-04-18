@@ -12,7 +12,7 @@ namespace ArabicaLibrary
         private List<Case> cases = new List<Case>();
         private byte nbCase;
         private byte nbCaseJouees;
-        private Dictionary<IA, int> casesPlantéesIA = new Dictionary<IA, int>();
+        private Dictionary<IA, int> casesPlanteesIA = new Dictionary<IA, int>();
 
         public Parcelle(char nom)
         {
@@ -25,6 +25,19 @@ namespace ArabicaLibrary
         {
             cases.Add(p_case);
             nbCase++;
+        }
+
+        public void nouvelleCasePlantee(IA planteur)
+        {
+            nbCaseJouees += 1;
+            if (casesPlanteesIA.ContainsKey(planteur))
+            {
+                casesPlanteesIA[planteur] += 1;
+            }
+            else
+            {
+                casesPlanteesIA.Add(planteur, 1);
+            }
         }
 
         public char Nom { get => nom; }
