@@ -19,12 +19,12 @@ namespace Arabica
          * Input : Référence sur un objet de type Socket, un string address_ip, un int port_number
          * Output: (void)
          */
-        public static void ConnectionServeur(ref Socket S, string address_ip, int port_number)
+        public static void ConnectionServeur(ref Socket S, string addressIp, int portNumber)
         {
-            S = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {
-                S.Connect(IPAddress.Parse(address_ip), port_number);
+                S = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                S.Connect(IPAddress.Parse(addressIp), portNumber);
             }
             catch
             {
@@ -40,14 +40,50 @@ namespace Arabica
          * Input : Référence sur une Socket
          * Output : un string Trame
          */
-        public static string RecevoirDuServeur(ref Socket S)
+        public static string RecevoirDuServeur(Socket S)
         {
             byte[] messageRecu = new byte[1024];
             int byteRecu = S.Receive(messageRecu);
-            string Trame = Encoding.ASCII.GetString(messageRecu);
+            string messageRecuString = Encoding.ASCII.GetString(messageRecu);
             S.Shutdown(SocketShutdown.Both);
             S.Close();
-            return Trame;
+            return messageRecuString;
         }
+
+        public static bool GetValide(Socket S)
+        {
+            string messageRecu = RecevoirDuServeur(S);
+            if (messageRecu == "VALI") return true;
+            else return false;
+        }
+
+        public static int[] GetJeuServeur(Socket S)
+        {
+            string messageRecu = RecevoirDuServeur(S);
+            if (messageRecu == "FINI") return null;
+            int[] JeuServeur = new int[2];
+            JeuServeur[0] = messageRecu[2];
+            JeuServeur[1] = messageRecu[3];
+            return JeuServeur;
+        }
+
+        public static bool GetRejouer(Socket S)
+        {
+            string messageRecu = RecevoirDuServeur(S);
+            if (messageRecu == "ENCO") return true;
+            else return false;
+        }
+
+        public static int[] GetScores(Socket S)
+        {
+            string messageRecu = RecevoirDuServeur(S);
+            string[] decoupage = messageRecu.Split(':');
+
+            int[] Scores = new int[2];
+            Scores[0] = int.Parse(decoupage[1]);
+            Scores[1] = int.Parse(decoupage[2]);
+            return Scores;
+        }
+
     }
 }

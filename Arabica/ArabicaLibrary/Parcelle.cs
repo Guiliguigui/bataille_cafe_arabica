@@ -21,13 +21,13 @@ namespace ArabicaLibrary
             this.nbCaseJouees = 0;
         }
 
-        public void ajouterCase(Case p_case)
+        public void AjouterCase(Case p_case)
         {
             cases.Add(p_case);
             nbCase++;
         }
 
-        public void nouvelleCasePlantee(IA planteur)
+        public void NouvelleCasePlantee(IA planteur)
         {
             nbCaseJouees += 1;
             if (casesPlanteesIA.ContainsKey(planteur))
@@ -44,6 +44,6 @@ namespace ArabicaLibrary
         public List<Case> Cases { get => cases;}
         public byte NbCase { get => nbCase; }
         public byte NbCaseJouees { get => nbCaseJouees; }
-
+        public Dictionary<IA, int> CasesPlanteesIA { get => casesPlanteesIA; }
     }
 }

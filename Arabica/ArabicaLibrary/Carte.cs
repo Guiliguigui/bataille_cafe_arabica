@@ -62,7 +62,7 @@ namespace ArabicaLibrary
                     char nomCase = carte[tmpCase[0], tmpCase[1]];
                     Case caseObjet = new Case(tmpCase[0], tmpCase[1], parcelleObjet);
                     this.carteObjet[tmpCase[0], tmpCase[1]] = caseObjet;
-                    parcelleObjet.ajouterCase(caseObjet);
+                    parcelleObjet.AjouterCase(caseObjet);
 
                     // Vérification de l'emplacement des bordures de la carte 
                     if (valeurCase / 8 == 1)
@@ -155,7 +155,7 @@ namespace ArabicaLibrary
                         parcelles.Add(parcelleObjet);
                         Case caseObjet = new Case(index1, index2, parcelleObjet);
                         this.carteObjet[index1, index2] = caseObjet;
-                        parcelleObjet.ajouterCase(caseObjet);
+                        parcelleObjet.AjouterCase(caseObjet);
                         Spread(index1, index2, tabValeursCarte, parcelleObjet);
                         isPremiereParcelle = false;
                     }
@@ -166,7 +166,7 @@ namespace ArabicaLibrary
                         parcelles.Add(parcelleObjet);
                         Case caseObjet = new Case(index1, index2, parcelleObjet);
                         this.carteObjet[index1, index2] = caseObjet;
-                        parcelleObjet.ajouterCase(caseObjet);
+                        parcelleObjet.AjouterCase(caseObjet);
                         Spread(index1, index2, tabValeursCarte,parcelleObjet);
                     }
                 }

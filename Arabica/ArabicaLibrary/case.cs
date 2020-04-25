@@ -25,10 +25,13 @@ namespace ArabicaLibrary
         public Parcelle Parcelle { get => parcelle;}
         public IA Proprietaire { get => proprietaire;}
 
-        public void planter(IA planteur)
+        public void Planter(IA planteur)
         {
+            if (this.proprietaire != null)
+                throw new Exception();
+
             this.proprietaire = planteur;
-            this.parcelle.nouvelleCasePlantee(planteur);
+            this.parcelle.NouvelleCasePlantee(planteur);
         }
     }
 }

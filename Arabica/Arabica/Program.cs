@@ -26,9 +26,9 @@ namespace Arabica
             //string trame = ("3:1:1:1:1:1:1:1:1:9|2:0:0:0:0:0:0:0:0:8|2:0:0:0:0:0:0:0:0:8|2:0:0:0:0:0:0:0:0:8|2:0:0:0:0:0:0:0:0:8|2:0:0:0:0:0:0:0:0:8|2:0:0:0:0:0:0:0:0:8|2:0:0:0:0:0:0:0:0:8|2:0:0:0:0:0:0:0:0:8|6:4:4:4:4:4:4:4:4:12|");
             Carte Carte = new Carte(trame);
             Carte.Afficher();
-            IA Joueur = new IA();
-            Carte.CarteObjet[1,5].planter(Joueur);
-            
+            IA ArabicaMaster = new IA("ArabicaMaster");
+            IA ClerentIA = new IA("ClerentIA");
+
             Console.ReadKey();
         }
     }
