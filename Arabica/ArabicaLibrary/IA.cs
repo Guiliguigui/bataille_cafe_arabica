@@ -8,8 +8,8 @@ namespace ArabicaLibrary
 {
     public class IA
     {
-        private string nom;
-        private Case dernièreCaseJouée;
+        private readonly string nom;
+        private Case derniereCaseJouee;
 
         public IA(string nom)
         {
@@ -17,7 +17,7 @@ namespace ArabicaLibrary
         }
 
         public string Nom { get => nom;}
-        public Case DernièreCaseJouée { get => dernièreCaseJouée;}
+        public Case DerniereCaseJouee { get => derniereCaseJouee;}
 
         public List<Case> GetCasesJouables(Case derniereCase, Carte carteObjet)
         {

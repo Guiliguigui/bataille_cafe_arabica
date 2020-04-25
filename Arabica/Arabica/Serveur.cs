@@ -12,14 +12,11 @@ namespace Arabica
     /*Class Serveur
      * Cette classe sert pour tout ce qui concerne le serveur
      */
-    class PartieServeur
+    class Serveur
     {
-        /*FP1 :Procédure ConnectionServeur
-         * Elle permet de se connecter au serveur et quitte le programme  en cas d'echec
-         * Input : Référence sur un objet de type Socket, un string address_ip, un int port_number
-         * Output: (void)
-         */
-        public static void ConnectionServeur(ref Socket S, string addressIp, int portNumber)
+        private Socket S;
+        
+        public Serveur(string addressIp, int portNumber)
         {
             try
             {
@@ -34,32 +31,31 @@ namespace Arabica
             }
 
         }
-
-        /*FP2 : Fonction RecevoirDuServeur de type string
-         * Elle permet de recevoir les informations envoyés pas le serveur ainsi que de clore la connexion avec le serveur
-         * Input : Référence sur une Socket
-         * Output : un string Trame
-         */
-        public static string RecevoirDuServeur(Socket S)
+        
+        public string RecevoirDuServeur()
         {
             byte[] messageRecu = new byte[1024];
-            int byteRecu = S.Receive(messageRecu);
+            S.Receive(messageRecu);
             string messageRecuString = Encoding.ASCII.GetString(messageRecu);
-            S.Shutdown(SocketShutdown.Both);
-            S.Close();
             return messageRecuString;
         }
 
-        public static bool GetValide(Socket S)
+        public void Jouer(int x, int y)
         {
-            string messageRecu = RecevoirDuServeur(S);
+            string message = "A:" + x + y;
+            S.Send(Encoding.ASCII.GetBytes(message));
+        }
+
+        public bool GetValide()
+        {
+            string messageRecu = RecevoirDuServeur();
             if (messageRecu == "VALI") return true;
             else return false;
         }
 
-        public static int[] GetJeuServeur(Socket S)
+        public int[] GetJeu()
         {
-            string messageRecu = RecevoirDuServeur(S);
+            string messageRecu = RecevoirDuServeur();
             if (messageRecu == "FINI") return null;
             int[] JeuServeur = new int[2];
             JeuServeur[0] = messageRecu[2];
@@ -67,16 +63,16 @@ namespace Arabica
             return JeuServeur;
         }
 
-        public static bool GetRejouer(Socket S)
+        public bool GetRejouer()
         {
-            string messageRecu = RecevoirDuServeur(S);
+            string messageRecu = RecevoirDuServeur();
             if (messageRecu == "ENCO") return true;
             else return false;
         }
 
-        public static int[] GetScores(Socket S)
+        public int[] GetScores()
         {
-            string messageRecu = RecevoirDuServeur(S);
+            string messageRecu = RecevoirDuServeur();
             string[] decoupage = messageRecu.Split(':');
 
             int[] Scores = new int[2];
@@ -84,6 +80,11 @@ namespace Arabica
             Scores[1] = int.Parse(decoupage[2]);
             return Scores;
         }
-
+        
+        public void Fermer()
+        {
+            S.Shutdown(SocketShutdown.Both);
+            S.Close();
+        }
     }
 }
