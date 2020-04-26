@@ -32,9 +32,9 @@ namespace Arabica
 
         }
         
-        public string RecevoirDuServeur()
+        public string RecevoirDuServeur(int size)
         {
-            byte[] messageRecu = new byte[1024];
+            byte[] messageRecu = new byte[size];
             S.Receive(messageRecu);
             string messageRecuString = Encoding.ASCII.GetString(messageRecu);
             return messageRecuString;
@@ -48,37 +48,37 @@ namespace Arabica
 
         public bool GetValide()
         {
-            string messageRecu = RecevoirDuServeur();
-            if (messageRecu == "VALI") return true;
+            string messageRecu = RecevoirDuServeur(4);
+            if (messageRecu.Contains("VALI")) return true;
             else return false;
         }
 
         public int[] GetJeu()
         {
-            string messageRecu = RecevoirDuServeur();
-            if (messageRecu == "FINI") return null;
-            int[] JeuServeur = new int[2];
-            JeuServeur[0] = messageRecu[2];
-            JeuServeur[1] = messageRecu[3];
-            return JeuServeur;
+            string messageRecu = RecevoirDuServeur(4);
+            if (messageRecu.Contains("FINI")) return null;
+            int[] jeuServeur = new int[2];
+            jeuServeur[0] = messageRecu[2] - 48;
+            jeuServeur[1] = messageRecu[3] - 48;
+            return jeuServeur;
         }
 
         public bool GetRejouer()
         {
-            string messageRecu = RecevoirDuServeur();
-            if (messageRecu == "ENCO") return true;
+            string messageRecu = RecevoirDuServeur(4);
+            if (messageRecu.Contains("ENCO")) return true;
             else return false;
         }
 
         public int[] GetScores()
         {
-            string messageRecu = RecevoirDuServeur();
+            string messageRecu = RecevoirDuServeur(7);
             string[] decoupage = messageRecu.Split(':');
 
-            int[] Scores = new int[2];
-            Scores[0] = int.Parse(decoupage[1]);
-            Scores[1] = int.Parse(decoupage[2]);
-            return Scores;
+            int[] scores = new int[2];
+            scores[0] = int.Parse(decoupage[1]);
+            scores[1] = int.Parse(decoupage[2]);
+            return scores;
         }
         
         public void Fermer()

@@ -31,6 +31,7 @@ namespace ArabicaLibrary
                 throw new Exception();
 
             this.proprietaire = planteur;
+            this.proprietaire.DerniereCaseJouee = this;
             this.parcelle.NouvelleCasePlantee(planteur);
         }
     }

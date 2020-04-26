@@ -17,7 +17,7 @@ namespace ArabicaLibrary
         }
 
         public string Nom { get => nom;}
-        public Case DerniereCaseJouee { get => derniereCaseJouee;}
+        public Case DerniereCaseJouee { get => derniereCaseJouee; set => derniereCaseJouee = value; }
 
         public List<Case> GetCasesJouables(Case derniereCase, Carte carteObjet)
         {
