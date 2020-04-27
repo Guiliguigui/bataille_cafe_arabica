@@ -32,16 +32,11 @@ namespace Arabica
 
             while (!fini)
             {
-                Random rand = new Random();
-                int var = rand.Next(1, 9);
-                //jeu du client carte
-                Serveur.Jouer(1, var);
+                int [] caseJouee = IAClient.ChoisirOuJouer(IAServeur.DerniereCaseJouee, Carte);
+                Serveur.Jouer(caseJouee[0], caseJouee[1]);
                 bool valide = Serveur.GetValide();
                 Console.WriteLine("valide ="+ valide);
-                if (valide)
-                {
-                    Carte.CarteObjet[1, var].Planter(IAClient);
-                }
+                if (valide) Carte.CarteObjet[caseJouee[0], caseJouee[1]].Planter(IAClient);
 
                 int[] jeuServeur = Serveur.GetJeu();
                 Console.WriteLine("jeu =" + jeuServeur[0]+ jeuServeur[1]);
