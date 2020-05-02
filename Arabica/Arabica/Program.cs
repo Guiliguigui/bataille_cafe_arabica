@@ -34,14 +34,15 @@ namespace Arabica
             {
                 int [] caseJouee = IAClient.ChoisirOuJouer(IAServeur.DerniereCaseJouee, Carte);
                 Serveur.Jouer(caseJouee[0], caseJouee[1]);
+                Console.WriteLine(string.Format("{0} : {1} {2}", IAClient.Nom, caseJouee[0], caseJouee[1]));
                 bool valide = Serveur.GetValide();
-                Console.WriteLine("valide ="+ valide);
+                Console.WriteLine("valide = "+ valide);
                 if (valide) Carte.CarteObjet[caseJouee[0], caseJouee[1]].Planter(IAClient);
 
                 int[] jeuServeur = Serveur.GetJeu();
-                Console.WriteLine("jeu =" + jeuServeur[0]+ jeuServeur[1]);
+                Console.WriteLine(string.Format("{0} : {1} {2}", IAServeur.Nom, jeuServeur[0], jeuServeur[1]));
                 bool rejouer = Serveur.GetRejouer();
-                Console.WriteLine("rejouer =" + rejouer);
+                Console.WriteLine("rejouer = " + rejouer);
                 if (jeuServeur == null) fini = true;
                 else
                 {
@@ -51,7 +52,11 @@ namespace Arabica
             }
 
             int[] scores = Serveur.GetScores();
-            Console.WriteLine("Scores : \n -" + IAClient.Nom + " : " + scores[0] + "\n -" + IAServeur.Nom + " : " + scores[1]);
+            Console.WriteLine(string.Format("Scores : \n -{0} : {1}\n -{2} : {3}", IAClient.Nom, scores[0], IAServeur.Nom, scores[1]));
+            if (scores[0] > scores[1])
+                Console.WriteLine("Gagné!");
+            else
+                Console.WriteLine("Perdu!");
             Carte.Afficher();
             Serveur.Fermer();
             Console.ReadKey();

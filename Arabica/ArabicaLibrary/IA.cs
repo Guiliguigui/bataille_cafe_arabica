@@ -59,9 +59,48 @@ namespace ArabicaLibrary
             {
                 List<Case> casesJouables = new List<Case>();
                 casesJouables = GetCasesJouables(derniereCase, carte);
-                int var = rand.Next(0, casesJouables.Count);
-                x = casesJouables[var].X;
-                y = casesJouables[var].Y;
+                Dictionary<Case, int> priorites = new Dictionary<Case, int>();
+
+                foreach (Case @case in casesJouables)
+                {
+                    int priorite = 0;
+
+                    List<Case> casesVoisines = new List<Case>();
+                    casesVoisines.Add(carte.CarteObjet[@case.X + 1, @case.Y]);
+                    casesVoisines.Add(carte.CarteObjet[@case.X - 1, @case.Y]);
+                    casesVoisines.Add(carte.CarteObjet[@case.X, @case.Y + 1]);
+                    casesVoisines.Add(carte.CarteObjet[@case.X, @case.Y - 1]);
+                    foreach (Case voisine in casesVoisines)  if(voisine != null) if(voisine.Proprietaire == this) priorite += 1;
+
+                    Parcelle parcelle = @case.Parcelle;
+                    int casesPosedees = 0;
+                    if (parcelle.CasesPlanteesIA.ContainsKey(this)) casesPosedees = parcelle.CasesPlanteesIA[this];
+                    int casesServeur = parcelle.NbCaseJouees - casesPosedees;
+
+                    if (casesPosedees <= parcelle.NbCase / 2)
+                    {
+                        if (casesServeur > parcelle.NbCase / 2)//parcelle bloquée par le serveur
+                            priorite -= 10;
+                        else if (casesServeur == parcelle.NbCase / 2 && casesPosedees == parcelle.NbCase / 2 - 1)//bloquer la parcelle et empécher le gain de points
+                            priorite += 4;
+                        else
+                            priorite += 2;
+                    }
+                    else//parcelle bloquée par le client
+                    {
+                        priorite -= 4;
+                    }
+
+                    priorites.Add(@case, priorite);
+                }
+                
+                Case caseSelectionnee = priorites.OrderByDescending(@case => @case.Value).FirstOrDefault().Key;
+                x = caseSelectionnee.X;
+                y = caseSelectionnee.Y;
+
+                //int var = rand.Next(0, casesJouables.Count);
+                //x = casesJouables[var].X;
+                //y = casesJouables[var].Y;
             }
             return new int[2] { x, y };
         }
