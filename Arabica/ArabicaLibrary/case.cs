@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ArabicaLibrary
 {
+    /* Classe Case
+     * Cette classe sert à créer une case dynamique et communiquante avec la parcelle lui correspondant
+     */
     public class Case
     {
         private int x, y;
@@ -25,11 +28,13 @@ namespace ArabicaLibrary
         public Parcelle Parcelle { get => parcelle;}
         public IA Proprietaire { get => proprietaire;}
 
+        /* Planter
+         * Permet de planter un grain de café dans la case et d'actualiser le propriétaire et la parcelle 
+         * Input  : l'IA qui a planté la case
+         * Output : void
+         */
         public void Planter(IA planteur)
         {
-            if (this.proprietaire != null)
-                throw new Exception();
-
             this.proprietaire = planteur;
             this.proprietaire.DerniereCaseJouee = this;
             this.parcelle.NouvelleCasePlantee(planteur);

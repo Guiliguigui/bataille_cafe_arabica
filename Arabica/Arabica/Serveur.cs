@@ -9,8 +9,8 @@ using System.IO;
 
 namespace Arabica
 {
-    /*Class Serveur
-     * Cette classe sert pour tout ce qui concerne le serveur
+    /* Classe Serveur
+     * Cette classe sert pour tout ce qui concerne la communication avec le serveur
      */
     class Serveur
     {
@@ -31,7 +31,12 @@ namespace Arabica
             }
 
         }
-        
+
+        /* RecevoirDuServeur
+         * Permet de recevoir les informations envoyée par le serveur et les convertis en chaine de caractères
+         * Input  : taille de la chaine voulue
+         * Output : void
+         */
         public string RecevoirDuServeur(int size)
         {
             byte[] messageRecu = new byte[size];
@@ -40,47 +45,77 @@ namespace Arabica
             return messageRecuString;
         }
 
+        /* Jouer
+         * Permet d'envoyer au serveur le jeu du client sous le bon format
+         * Input  : coordonées de la case jouée par le client
+         * Output : void
+         */
         public void Jouer(int x, int y)
         {
             string message = "A:" + x + y;
             S.Send(Encoding.ASCII.GetBytes(message));
         }
 
+        /* GetValide
+         * Permet de recevoir la validité de la case jouée par le client
+         * Input  : void
+         * Output : booléen de validité
+         */
         public bool GetValide()
         {
             string messageRecu = RecevoirDuServeur(4);
-            if (messageRecu.Contains("VALI")) return true;
+            if (messageRecu == "VALI") return true;
             else return false;
         }
 
+        /* GetJeu
+         * Permet de recevoir le jeu du serveur
+         * Input  : void
+         * Output : tableau de 2 entiers contenant le jeu du serveur
+         *          si le jeu est fini, retourne null
+         */
         public int[] GetJeu()
         {
             string messageRecu = RecevoirDuServeur(4);
-            if (messageRecu.Contains("FINI")) return null;
+            if (messageRecu == "FINI") return null;
             int[] jeuServeur = new int[2];
-            jeuServeur[0] = messageRecu[2] - 48;
+            jeuServeur[0] = messageRecu[2] - 48; // décalement du à l'ASCII
             jeuServeur[1] = messageRecu[3] - 48;
             return jeuServeur;
         }
 
+        /* GetRejouer
+         * Permet de savoir si le client doit rejouer
+         * Input  : void
+         * Output : booléen de validité où false signifie que la partie est finie
+         */
         public bool GetRejouer()
         {
             string messageRecu = RecevoirDuServeur(4);
-            if (messageRecu.Contains("ENCO")) return true;
+            if (messageRecu == "ENCO") return true;
             else return false;
         }
 
+        /* GetScores
+         * Permet de recevoir les scores en fin de partie
+         * Input  : void
+         * Output : tableau de 2 entiers contenant le score final
+         */
         public int[] GetScores()
         {
             string messageRecu = RecevoirDuServeur(7);
             string[] decoupage = messageRecu.Split(':');
-
             int[] scores = new int[2];
             scores[0] = int.Parse(decoupage[1]);
             scores[1] = int.Parse(decoupage[2]);
             return scores;
         }
-        
+
+        /* Fermer
+         * Permet de fermer la connexion avec le serveut
+         * Input  : void
+         * Output : void
+         */
         public void Fermer()
         {
             S.Shutdown(SocketShutdown.Both);
