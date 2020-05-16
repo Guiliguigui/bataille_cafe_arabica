@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,8 +28,8 @@ namespace ArabicaLibrary
         //Les méthodes initialement contenues dans Decodage.cs ont été déplacées et réadaptées pour simplifier le code
 
         /* Lecture
-         * Permet de stocker les valeurs de la trame dans un tableau d'entier de 10 par 10
-         * Input  : Trame de la carte obtenu dans la partie serveur
+         * Permet de stocker les valeurs de la trame dans un tableau d'entiers de 10 par 10
+         * Input  : Trame de la carte obtenue dans la partie serveur
          * Output : Tableau des valeurs pour chaque case de la trame 
          */
         private int[,] Lecture(string trame)
@@ -121,7 +121,7 @@ namespace ArabicaLibrary
                         }
                     }
                     toDoTemp.RemoveAt(0);
-                    // Enlevement de la case qui a été étendue à ses voisines
+                    //  La case qui a été étendue à ses voisines est retirée de la liste
                 }
                 toDo = toDoTemp.ToList();
                 // Update de la liste de cases à étendre
@@ -129,7 +129,8 @@ namespace ArabicaLibrary
         }
 
         /* Decodage 
-         * Permet de décoder les valeurs contenues dans le tableau pour créer les cartes finales (caractères et objet)
+         * Permet de décoder les valeurs contenues dans le tableau pour créer 
+         * les cartes finales (caractères et cases)
          * Input  : Tableau des appartenances parcelle pour chaque cases de la trame
          * Output : void
          */
@@ -183,7 +184,8 @@ namespace ArabicaLibrary
         }
 
         /* Afficher
-         * Permet d'afficher la carte à l'aide des caractères contenus dans le tableau de la carte décodée en caractères
+         * Permet d'afficher la carte à l'aide des caractères contenus dans le 
+         * tableau de la carte décodée en caractères
          * Input  : void
          * Output : void
          */
