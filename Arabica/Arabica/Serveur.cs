@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,7 +33,8 @@ namespace Arabica
         }
 
         /* RecevoirDuServeur
-         * Permet de recevoir les informations envoyée par le serveur et les convertis en chaine de caractères
+         * Permet de recevoir les informations envoyées par le serveur et de les
+         * convertir en chaine de caractères
          * Input  : taille de la chaine voulue
          * Output : void
          */
@@ -79,7 +80,7 @@ namespace Arabica
             string messageRecu = RecevoirDuServeur(4);
             if (messageRecu == "FINI") return null;
             int[] jeuServeur = new int[2];
-            jeuServeur[0] = messageRecu[2] - 48; // décalement du à l'ASCII
+            jeuServeur[0] = messageRecu[2] - 48; // décalement dû à l'ASCII
             jeuServeur[1] = messageRecu[3] - 48;
             return jeuServeur;
         }
@@ -112,7 +113,7 @@ namespace Arabica
         }
 
         /* Fermer
-         * Permet de fermer la connexion avec le serveut
+         * Permet de fermer la connexion avec le serveur
          * Input  : void
          * Output : void
          */
