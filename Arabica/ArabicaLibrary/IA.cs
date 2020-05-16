@@ -26,7 +26,7 @@ namespace ArabicaLibrary
         /* GetCasesJouables
          * Permet de savoir quelle case l'IA cliente à le droit de planter selon les règles du jeu
          * Input  : la dernière case jouée par l'ia adverse et l'instance de la carte
-         * Output : la liste des case jouable par le client
+         * Output : la liste des cases jouables par le client
          */
         private List<Case> GetCasesJouables(Case derniereCase, Carte carte)
         {
@@ -38,7 +38,7 @@ namespace ArabicaLibrary
             /* Pour chaque case dans la même ligne ou colonne on vérifie que la case :
              * -n'est pas la dernière case jouée
              * -n'est pas mer ou foret (null)
-             * -ne fait pas parti à la parcelle de la dernière case
+             * -ne fait pas partie de la parcelle dont la dernière case est issue
              * -n'a pas de propriétaire (n'est pas plantée)
              */
             for (int indexX = 0; indexX < 10; indexX++) 
@@ -87,7 +87,7 @@ namespace ArabicaLibrary
                 {
                     int priorite = 0;//valeur indiquant l'importantce de jouer une case plutot qu'un autre
 
-                    //on cerche des cases voisines plantée par le client pour le bonus
+                    //on cerche des cases voisines plantées par le client pour le bonus
                     List<Case> casesVoisines = new List<Case>();
                     casesVoisines.Add(carte.CarteObjet[@case.X + 1, @case.Y]);
                     casesVoisines.Add(carte.CarteObjet[@case.X - 1, @case.Y]);
@@ -103,14 +103,14 @@ namespace ArabicaLibrary
 
                     if (casesPosedees <= parcelle.NbCase / 2)
                     {
-                        if (casesServeur > parcelle.NbCase / 2)//points parcelle bloquée par le serveur
+                        if (casesServeur > parcelle.NbCase / 2)//points parcelle bloqués par le serveur
                             priorite -= 10;
-                        else if (casesServeur == parcelle.NbCase / 2 && casesPosedees == parcelle.NbCase / 2 - 1)//bloquer la parcelle et empécher le gain de points
+                        else if (casesServeur == parcelle.NbCase / 2 && casesPosedees == parcelle.NbCase / 2 - 1)//bloquer la parcelle et empêcher le gain de points
                             priorite += 4;
                         else
                             priorite += 2;
                     }
-                    else//points parcelle bloquée par le client
+                    else//points parcelle bloqués par le client
                         priorite -= 4;
 
                     priorites.Add(@case, priorite);
