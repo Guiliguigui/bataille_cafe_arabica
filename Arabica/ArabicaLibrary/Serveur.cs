@@ -7,12 +7,12 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 
-namespace Arabica
+namespace ArabicaLibrary
 {
     /* Classe Serveur
      * Cette classe sert pour tout ce qui concerne la communication avec le serveur
      */
-    class Serveur
+    public class Serveur
     {
         private Socket S;
         
