@@ -89,10 +89,10 @@ namespace ArabicaLibrary
 
                     //on cerche des cases voisines plantées par le client pour le bonus
                     List<Case> casesVoisines = new List<Case>();
-                    casesVoisines.Add(carte.CarteObjet[@case.X + 1, @case.Y]);
-                    casesVoisines.Add(carte.CarteObjet[@case.X - 1, @case.Y]);
-                    casesVoisines.Add(carte.CarteObjet[@case.X, @case.Y + 1]);
-                    casesVoisines.Add(carte.CarteObjet[@case.X, @case.Y - 1]);
+                    if (@case.X + 1 < 10) casesVoisines.Add(carte.CarteObjet[@case.X + 1, @case.Y]);
+                    if (@case.X - 1 >= 0) casesVoisines.Add(carte.CarteObjet[@case.X - 1, @case.Y]);
+                    if (@case.Y + 1 < 10) casesVoisines.Add(carte.CarteObjet[@case.X, @case.Y + 1]);
+                    if (@case.Y - 1 >= 0) casesVoisines.Add(carte.CarteObjet[@case.X, @case.Y - 1]);
                     foreach (Case voisine in casesVoisines)  if(voisine != null) if(voisine.Proprietaire == this) priorite += 1;
 
                     Parcelle parcelle = @case.Parcelle;
